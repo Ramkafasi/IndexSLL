@@ -1,0 +1,7 @@
+Synced Single Linked Lists
+
+This project is my attempt to maintain two separate single linked lists, indexing and manipulating the nodes within it and implementing input sanitization and memory checks due to a university assignment.
+
+LICENSE
+
+This code is available under the MIT license.
