@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Windows inclusive screen cleaner
+// I am not using clrscr directly because mingw doesn't support clrscr
+#ifdef _WIN32
+#define clrscr() system("cls");
+#else
+#define clrscr() printf("\e[1;1H\e[2J");
+#endif
+
 enum sanitizertype{
 	INTEGER,
 	STRING
@@ -285,18 +293,18 @@ int main(){
 		choice=StringSanitizer(inputbuffer, INTEGER);
 		switch (choice) {
 			case 1:
-				printf("\e[1;1H\e[2J");
+				clrscr();
 				printf("Input the ID No:\n");
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
 					inputno=StringSanitizer(inputbuffer, INTEGER);
-				}while (inputno <= 0 && printf("Invalid input.\n")); // If the string input is empty ask again.
+				}while (inputno <= 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 	
 				printf("Input the student name: (MAX 25 CHARACTER)\n");
 				do { 
 					fgets(inputname, sizeof(inputname), stdin);
-				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input.\n"));
+				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input, try again.\n"));
 			
 				if (AddStudent(inputno, inputname) == 1) {
 					fprintf(stderr, "Premature exit: Memory Allocation Failed"); // stderr is unbuffered it would return this message immediately.
@@ -304,47 +312,47 @@ int main(){
 				}
 				break;
 			case 2:
-				printf("\e[1;1H\e[2J");
+				clrscr();
 				printf("Input the ID No:\n");
 
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin); 
 					inputno=StringSanitizer(inputbuffer, INTEGER);
-				}while (inputno <= 0 && printf("Invalid input.\n")); // If the string input is empty ask again.
+				}while (inputno <= 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 				
 				printf("Input the student name: (MAX 25 CHARACTER)\n");
 				do { 
 					fgets(inputname, sizeof(inputname), stdin);
-				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input.\n"));
+				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input, try again.\n")); // IF the string input is empty ask again.
 			
 				DeleteStudent(inputno,inputname);
 				break;
 			case 3:
-				printf("\e[1;1H\e[2J");
+				clrscr();
 				printf("Input the ID No:\n");
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
 					inputno=StringSanitizer(inputbuffer, INTEGER);
-				}while (inputno <= 0 && printf("Invalid input.\n")); // If the string input is empty ask again.
+				}while (inputno <= 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 	
 				printf("Input the student name: (MAX 25 CHARACTER)\n");
 				do { 
 					fgets(inputname, sizeof(inputname), stdin);
-				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input.\n"));
+				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 	
 				printf("Input the new ID No:\n");
 				do { 
 					newID=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
 					newID=StringSanitizer(inputbuffer, INTEGER);
-				}while (newID <= 0 && printf("Invalid input.\n")); // If the string input is empty ask again.
+				}while (newID <= 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 	
 				printf("Input the new student name: (MAX 25 CHARACTER)\n");
 				do { 
 					fgets(newName, sizeof(newName), stdin);
-				}while (StringSanitizer(newName, STRING) == 0 && printf("Invalid input.\n"));
+				}while (StringSanitizer(newName, STRING) == 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again
 		
 				if (UpdateStudent(inputno,inputname,newID,newName) == 1) {
 					fprintf(stderr, "Premature exit: Memory Allocation Failed"); // stderr is unbuffered it would return this message immediately.
@@ -352,31 +360,31 @@ int main(){
 				}
 				break;
 			case 4:
-				printf("\e[1;1H\e[2J");
+				clrscr();
 				printf("Input the ID No:\n");
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
 					inputno=StringSanitizer(inputbuffer, INTEGER);
-				}while (inputno <= 0 && printf("Invalid input.\n")); // If the string input is empty ask again.
+				}while (inputno <= 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 				
 				FindID(inputno);
 				break;
 			case 5:
-				printf("\e[1;1H\e[2J");
+				clrscr();
 				printf("Input the student name: (MAX 25 CHARACTER)\n");
 				do { 
 					fgets(inputname, sizeof(inputname), stdin);
-				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input.\n"));
+				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 				
 				FindName(inputname);
 				break;
 			case 6:
-				printf("\e[1;1H\e[2J");
+				clrscr();
 				displayID();
 				break;
 			case 7:
-				printf("\e[1;1H\e[2J");
+				clrscr();
 				displayName();
 				break;
 			case 8: 
