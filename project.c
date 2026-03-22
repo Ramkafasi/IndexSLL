@@ -281,7 +281,7 @@ int main(){
 	int inputno;
 	int choice=0;
 	int newID;
-	char inputbuffer[25];
+	char inputbuffer[11];
 	char newName[25];
 	char inputname[25];
 	do {
@@ -294,7 +294,7 @@ int main(){
 		switch (choice) {
 			case 1:
 				clrscr();
-				printf("Input the ID No:\n");
+				printf("Input the ID No (MAX 9 DIGITS):\n");
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
@@ -313,7 +313,7 @@ int main(){
 				break;
 			case 2:
 				clrscr();
-				printf("Input the ID No:\n");
+				printf("Input the ID No (MAX 9 DIGITS):\n");
 
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
@@ -330,7 +330,7 @@ int main(){
 				break;
 			case 3:
 				clrscr();
-				printf("Input the ID No:\n");
+				printf("Input the ID No (MAX 9 DIGITS):\n");
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
@@ -342,7 +342,7 @@ int main(){
 					fgets(inputname, sizeof(inputname), stdin);
 				}while (StringSanitizer(inputname, STRING) == 0 && printf("Invalid input, try again.\n")); // If the string input is empty ask again.
 	
-				printf("Input the new ID No:\n");
+				printf("Input the new ID No (MAX 9 DIGITS):\n");
 				do { 
 					newID=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
@@ -361,7 +361,7 @@ int main(){
 				break;
 			case 4:
 				clrscr();
-				printf("Input the ID No:\n");
+				printf("Input the ID No (MAX 9 DIGITS):\n");
 				do { 
 					inputno=0; // just in case inputno gets assigned to any other number in one of the switchcases.
 					fgets(inputbuffer, sizeof(inputbuffer), stdin);
